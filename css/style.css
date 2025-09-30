@@ -293,6 +293,26 @@ body {
 		border-top: none;
 		position: static;
 	}
+	
+	/* Prevent logo and brand movement during collapse animation */
+	.navbar-collapse.collapsing ~ .mobile-logo,
+	.navbar-collapse.collapsing ~ .modern-brand {
+		position: absolute !important;
+		transition: none !important;
+	}
+	
+	.navbar-collapse.collapsing ~ .mobile-logo {
+		left: 15px;
+		top: 50%;
+		transform: translateY(-50%);
+		z-index: 30;
+	}
+	
+	.navbar-collapse.collapsing ~ .modern-brand {
+		left: 50%;
+		transform: translateX(-50%);
+		z-index: 30;
+	}
 }
 
 @media (max-width: 768px) {
@@ -331,6 +351,7 @@ body {
 		top: 50%;
 		transform: translateY(-50%);
 		z-index: 20;
+		transition: none; /* Prevent unwanted animations */
 	}
 	
 	.mobile-logo .logo-img {
@@ -349,6 +370,7 @@ body {
 		left: 50%;
 		transform: translateX(-50%);
 		z-index: 10;
+		transition: none; /* Prevent unwanted animations */
 	}
 	
 	/* Brand text container - keep texts in one line */
@@ -399,10 +421,20 @@ body {
 		padding: 0 1rem;
 	}
 	
-	/* Ensure brand elements don't interfere with open menu */
-	.navbar-collapse.show ~ .mobile-logo,
+	/* Keep brand elements fixed in position when menu is open */
+	.navbar-collapse.show ~ .mobile-logo {
+		position: absolute;
+		left: 15px;
+		top: 50%;
+		transform: translateY(-50%);
+		z-index: 30;
+	}
+	
 	.navbar-collapse.show ~ .modern-brand {
-		z-index: 5;
+		position: absolute;
+		left: 50%;
+		transform: translateX(-50%);
+		z-index: 30;
 	}
 }
 
