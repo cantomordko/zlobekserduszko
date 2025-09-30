@@ -194,33 +194,34 @@ body {
 	transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* When menu is closed (collapsed) - show X */
 .modern-toggler.collapsed .modern-toggler-icon span:nth-child(1) {
-	transform: rotate(0deg) translate(0px, 0px);
-	background: #495057;
-}
-
-.modern-toggler.collapsed .modern-toggler-icon span:nth-child(2) {
-	opacity: 1;
-}
-
-.modern-toggler.collapsed .modern-toggler-icon span:nth-child(3) {
-	transform: rotate(0deg) translate(0px, 0px);
-	background: #495057;
-}
-
-/* When menu is open (not collapsed) */
-.modern-toggler:not(.collapsed) .modern-toggler-icon span:nth-child(1) {
 	transform: rotate(45deg) translate(6px, 6px);
 	background: var(--primary-color);
 }
 
-.modern-toggler:not(.collapsed) .modern-toggler-icon span:nth-child(2) {
+.modern-toggler.collapsed .modern-toggler-icon span:nth-child(2) {
 	opacity: 0;
 }
 
-.modern-toggler:not(.collapsed) .modern-toggler-icon span:nth-child(3) {
+.modern-toggler.collapsed .modern-toggler-icon span:nth-child(3) {
 	transform: rotate(-45deg) translate(6px, -6px);
 	background: var(--primary-color);
+}
+
+/* When menu is open (not collapsed) - show hamburger lines */
+.modern-toggler:not(.collapsed) .modern-toggler-icon span:nth-child(1) {
+	transform: rotate(0deg) translate(0px, 0px);
+	background: #495057;
+}
+
+.modern-toggler:not(.collapsed) .modern-toggler-icon span:nth-child(2) {
+	opacity: 1;
+}
+
+.modern-toggler:not(.collapsed) .modern-toggler-icon span:nth-child(3) {
+	transform: rotate(0deg) translate(0px, 0px);
+	background: #495057;
 }
 
 /* Animated Logo Styling */
