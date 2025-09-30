@@ -313,6 +313,23 @@ body {
 		transform: translateX(-50%);
 		z-index: 30;
 	}
+	
+	/* Override global hover effects for mobile brand - keep it completely stable */
+	.modern-brand:hover,
+	.modern-brand:focus,
+	.modern-brand:visited,
+	.modern-brand:active,
+	.modern-brand:active:focus {
+		transform: translateX(-50%) !important;
+		position: absolute !important;
+		left: 50% !important;
+		top: auto !important;
+	}
+	
+	/* Prevent any movement during touch interactions */
+	.modern-brand:active {
+		transition: none !important;
+	}
 }
 
 @media (max-width: 768px) {
@@ -371,6 +388,15 @@ body {
 		transform: translateX(-50%);
 		z-index: 10;
 		transition: none; /* Prevent unwanted animations */
+	}
+	
+	/* Disable hover effects on mobile to prevent movement */
+	.modern-brand:hover {
+		transform: translateX(-50%) !important; /* Keep centered position */
+	}
+	
+	.modern-brand:active {
+		transform: translateX(-50%) !important; /* Keep centered position on tap */
 	}
 	
 	/* Brand text container - keep texts in one line */
@@ -435,6 +461,14 @@ body {
 		left: 50%;
 		transform: translateX(-50%);
 		z-index: 30;
+	}
+	
+	/* Force brand to stay centered even when clicked during open menu */
+	.navbar-collapse.show ~ .modern-brand:hover,
+	.navbar-collapse.show ~ .modern-brand:active,
+	.navbar-collapse.show ~ .modern-brand:focus {
+		transform: translateX(-50%) !important;
+		left: 50% !important;
 	}
 }
 
