@@ -35,6 +35,19 @@ body {
 	gap: 0.5rem;
 	letter-spacing: -0.5px;
 	transition: all 0.3s ease;
+	justify-content: center;
+}
+
+/* Desktop logo - visible on large screens */
+.desktop-logo {
+	display: block;
+}
+
+/* Mobile logo - hidden by default */
+.mobile-logo {
+	display: none;
+	position: static;
+	bottom: auto;
 }
 
 .modern-brand:hover {
@@ -197,12 +210,15 @@ body {
 
 /* Animated Logo Styling */
 .navbar-logo {
+	transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+	cursor: pointer;
+}
+
+.desktop-logo {
 	position: absolute;
 	left: 50%;
 	transform: translateX(-50%);
-	transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 	z-index: 10;
-	cursor: pointer;
 }
 
 .logo-img {
@@ -218,12 +234,12 @@ body {
 }
 
 /* Logo positioning - initially at bottom of navbar */
-.navbar-logo {
+.desktop-logo {
 	bottom: -40px;
 }
 
 /* When scrolled - logo moves to center and shrinks */
-.modern-navbar.scrolled .navbar-logo {
+.modern-navbar.scrolled .desktop-logo {
 	bottom: 50%;
 	transform: translateX(-50%) translateY(50%);
 }
@@ -271,7 +287,7 @@ body {
 		height: 32px;
 	}
 
-	.navbar-logo {
+	.desktop-logo {
 		bottom: -30px;
 	}
 
@@ -284,21 +300,57 @@ body {
 	}
 }
 
+@media (max-width: 991px) {
+	/* Hide desktop logo on mobile/tablet */
+	.desktop-logo {
+		display: none;
+	}
+	
+	/* Show mobile logo between brand text */
+	.mobile-logo {
+		display: block;
+		margin: 0 auto;
+	}
+	
+	.mobile-logo .logo-img {
+		height: 40px;
+		width: auto;
+		display: block;
+		margin: 0 auto;
+	}
+	
+	.modern-brand {
+		justify-content: center;
+		text-align: center;
+		flex-direction: column;
+		gap: 0.3rem;
+		width: 100%;
+	}
+	
+	/* Stack brand elements vertically on mobile */
+	.brand-text, .brand-accent {
+		display: block;
+		text-align: center;
+		width: 100%;
+	}
+	
+	/* Center the entire navbar brand area */
+	.navbar-brand.modern-brand {
+		margin: 0 auto;
+		position: relative;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+}
+
 @media (max-width: 576px) {
-	.logo-img {
-		height: 50px;
-	}
-
-	.modern-navbar.scrolled .logo-img {
-		height: 28px;
-	}
-
-	.navbar-logo {
-		bottom: -25px;
+	.mobile-logo .logo-img {
+		height: 35px;
 	}
 
 	.modern-brand {
 		font-size: 1.2rem;
+		gap: 0.2rem;
 	}
 
 	.modern-nav-link {
