@@ -172,10 +172,10 @@ function initializeMap() {
 // Hero carousel: smooth crossfade between images
 function initializeHeroCarousel() {
 	const container = document.querySelector('.hero .ratio')
-	const heroImg = container ? container.querySelector('img') : null
+	let heroImg = container ? container.querySelector('img') : null
 	if (!container || !heroImg) return
 
-	const images = ['/assets/img/img1.webp', '/assets/img/img3.webp', '/assets/img/img5.webp']
+	const images = ['assets/img/img1.webp?v=1', 'assets/img/img3.webp?v=1', 'assets/img/img5.webp?v=1']
 
 	// Preload all images
 	images.forEach(src => {
@@ -186,7 +186,7 @@ function initializeHeroCarousel() {
 	let currentIndex = 0
 	// Find current image index
 	for (let i = 0; i < images.length; i++) {
-		if (heroImg.src.includes(images[i].split('/').pop())) {
+		if (heroImg.src.includes(images[i].split('?')[0].split('/').pop())) {
 			currentIndex = i
 			break
 		}
