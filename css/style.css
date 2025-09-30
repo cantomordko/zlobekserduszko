@@ -306,7 +306,7 @@ body {
 		display: none;
 	}
 	
-	/* Show mobile logo between brand text */
+	/* Show mobile logo below brand text */
 	.mobile-logo {
 		display: block;
 		margin: 0 auto;
@@ -327,11 +327,17 @@ body {
 		width: 100%;
 	}
 	
-	/* Stack brand elements vertically on mobile */
-	.brand-text, .brand-accent {
-		display: block;
+	/* Brand text container - keep texts in one line */
+	.brand-text-container {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 0.3rem;
 		text-align: center;
-		width: 100%;
+	}
+	
+	.brand-text, .brand-accent {
+		display: inline;
 	}
 	
 	/* Center the entire navbar brand area */
