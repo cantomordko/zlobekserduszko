@@ -1,0 +1,13 @@
+AddType image/webp .webp
+
+<IfModule mod_expires.c>
+    ExpiresActive on
+    ExpiresByType image/webp "access plus 1 month"
+    ExpiresByType image/svg+xml "access plus 1 month"
+</IfModule>
+
+<IfModule mod_headers.c>
+    <FilesMatch "\.(webp|svg)$">
+        Header set Cache-Control "public, max-age=2592000"
+    </FilesMatch>
+</IfModule>
