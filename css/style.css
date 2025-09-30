@@ -299,19 +299,32 @@ body {
 	.navbar-collapse.collapsing ~ .modern-brand {
 		position: absolute !important;
 		transition: none !important;
+		animation: none !important;
 	}
 	
 	.navbar-collapse.collapsing ~ .mobile-logo {
-		left: 15px;
-		top: 50%;
-		transform: translateY(-50%);
-		z-index: 30;
+		left: 15px !important;
+		top: 50% !important;
+		transform: translateY(-50%) !important;
+		z-index: 30 !important;
 	}
 	
 	.navbar-collapse.collapsing ~ .modern-brand {
-		left: 50%;
-		transform: translateX(-50%);
-		z-index: 30;
+		left: 50% !important;
+		top: auto !important;
+		transform: translateX(-50%) !important;
+		z-index: 30 !important;
+		position: absolute !important;
+	}
+	
+	/* Also fix during the entire collapse/expand process */
+	.navbar-collapse.collapsing ~ .modern-brand:hover,
+	.navbar-collapse.collapsing ~ .modern-brand:active,
+	.navbar-collapse.collapsing ~ .modern-brand:focus {
+		left: 50% !important;
+		transform: translateX(-50%) !important;
+		top: auto !important;
+		position: absolute !important;
 	}
 	
 	/* Override global hover effects for mobile brand - keep it completely stable */
@@ -329,6 +342,38 @@ body {
 	/* Prevent any movement during touch interactions */
 	.modern-brand:active {
 		transition: none !important;
+	}
+	
+	/* Ultimate stabilization - force fixed positions during any navbar state change */
+	.modern-navbar .mobile-logo,
+	.modern-navbar .modern-brand {
+		will-change: auto !important;
+	}
+	
+	/* Lock positions during any collapse state */
+	.navbar-collapse:not(.collapse) ~ .mobile-logo,
+	.navbar-collapse:not(.collapse) ~ .modern-brand,
+	.collapsing ~ .mobile-logo,
+	.collapsing ~ .modern-brand {
+		position: absolute !important;
+		transition: none !important;
+		animation: none !important;
+	}
+	
+	.navbar-collapse:not(.collapse) ~ .mobile-logo,
+	.collapsing ~ .mobile-logo {
+		left: 15px !important;
+		top: 50% !important;
+		transform: translateY(-50%) !important;
+		z-index: 30 !important;
+	}
+	
+	.navbar-collapse:not(.collapse) ~ .modern-brand,
+	.collapsing ~ .modern-brand {
+		left: 50% !important;
+		top: auto !important;
+		transform: translateX(-50%) !important;
+		z-index: 30 !important;
 	}
 }
 
@@ -449,18 +494,23 @@ body {
 	
 	/* Keep brand elements fixed in position when menu is open */
 	.navbar-collapse.show ~ .mobile-logo {
-		position: absolute;
-		left: 15px;
-		top: 50%;
-		transform: translateY(-50%);
-		z-index: 30;
+		position: absolute !important;
+		left: 15px !important;
+		top: 50% !important;
+		transform: translateY(-50%) !important;
+		z-index: 30 !important;
+		transition: none !important;
+		animation: none !important;
 	}
 	
 	.navbar-collapse.show ~ .modern-brand {
-		position: absolute;
-		left: 50%;
-		transform: translateX(-50%);
-		z-index: 30;
+		position: absolute !important;
+		left: 50% !important;
+		top: auto !important;
+		transform: translateX(-50%) !important;
+		z-index: 30 !important;
+		transition: none !important;
+		animation: none !important;
 	}
 	
 	/* Force brand to stay centered even when clicked during open menu */
@@ -469,6 +519,8 @@ body {
 	.navbar-collapse.show ~ .modern-brand:focus {
 		transform: translateX(-50%) !important;
 		left: 50% !important;
+		top: auto !important;
+		position: absolute !important;
 	}
 }
 
