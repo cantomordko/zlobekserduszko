@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="pl">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>FAQ - Żłobek Serduszko</title>
+    <meta name="description" content="Najczęściej zadawane pytania w Żłobku Serduszko.">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/o-nas.css" rel="stylesheet">
+    <link rel="icon" type="image/webp" href="assets/img/logo.webp">
+    <style>
+        /* FAQ Custom Styles */
+        .faq-accordion .faq-item {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(157, 222, 32, 0.2);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .faq-accordion .faq-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, rgba(157, 222, 32, 0.15), rgba(157, 222, 32, 0.05));
+            border-radius: 0 16px 0 100%;
+            z-index: 0;
+        }
+
+        .faq-accordion .faq-item::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color, #9dde20), transparent);
+            z-index: 1;
+        }
+
+        .faq-accordion .faq-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(157, 222, 32, 0.15);
+            border-color: rgba(157, 222, 32, 0.3);
+        }
+
+        .faq-accordion .faq-button {
+            background: transparent;
+            border: none;
+            padding: 1.5rem 1.75rem;
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .faq-accordion .faq-button:not(.collapsed) {
+            background: linear-gradient(135deg, rgba(157, 222, 32, 0.1), rgba(157, 222, 32, 0.05));
+            color: #2c3e50;
+            box-shadow: none;
+        }
+
+        .faq-accordion .faq-button:focus {
+            box-shadow: 0 0 0 3px rgba(157, 222, 32, 0.2);
+        }
+
+        .faq-accordion .faq-button::after {
+            background-image: none;
+            content: "▼";
+            font-size: 0.9rem;
+            color: var(--primary-color, #9dde20);
+            transition: transform 0.3s ease;
+            margin-left: auto;
+        }
+
+        .faq-accordion .faq-button:not(.collapsed)::after {
+            transform: rotate(180deg);
+        }
+
+        .faq-accordion .faq-icon {
+            font-size: 1.4rem;
+            opacity: 0.8;
+        }
+
+        .faq-accordion .accordion-body {
+            padding: 1rem 1.75rem 1.5rem;
+            color: #4a5568;
+            line-height: 1.7;
+            position: relative;
+            z-index: 2;
+        }
+
+        .faq-accordion .accordion-body h6 {
+            color: var(--primary-color, #9dde20);
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+
+        .faq-accordion .accordion-body ul {
+            padding-left: 1.2rem;
+        }
+
+        .faq-accordion .accordion-body li {
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+
+        .faq-accordion .accordion-body li::marker {
+            color: var(--primary-color, #9dde20);
+        }
+
+        .faq-accordion .accordion-body a {
+            color: var(--primary-color, #9dde20);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .faq-accordion .accordion-body a:hover {
+            color: #8ac71b;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg fixed-top modern-navbar" id="mainNavbar">
+        <div class="container position-relative">
+            <a class="navbar-brand modern-brand" href="index.html">
+                <span class="brand-text">Żłobek</span>
+                <span class="brand-accent">Serduszko</span>
+            </a>
+            <div class="navbar-logo">
+                <img src="assets/img/logo.webp" alt="Żłobek Serduszko" class="logo-img">
+            </div>
+            <button class="navbar-toggler modern-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav"
+                aria-controls="nav" aria-expanded="false" aria-label="Menu">
+                <span class="modern-toggler-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
+            </button>
+            <div class="collapse navbar-collapse" id="nav">
+                <ul class="navbar-nav ms-auto align-items-lg-center">
+                    <li class="nav-item"><a class="nav-link modern-nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link modern-nav-link" href="o-nas.html">O nas</a></li>
+                    <li class="nav-item"><a class="nav-link modern-nav-link" href="index.html#placowki">Placówki</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link modern-nav-link dropdown-toggle active" href="#" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Inne
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item active" href="faq.html">FAQ</a></li>
+                            <li><a class="dropdown-item" href="cennik.html">Cennik</a></li>
+                            <li><a class="dropdown-item" href="plan-dnia.html">Plan dnia</a></li>
+                            <li><a class="dropdown-item" href="pliki.html">Pliki do pobrania</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item ms-lg-3">
+                        <a class="btn modern-contact-btn" href="index.html#kontakt">
+                            <span class="btn-text">Kontakt</span>
+                            <span class="btn-icon">→</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero section -->
+    <section class="hero-simple py-5 mt-5">
+        <div class="container">
+            <div class="text-center">
+                <h1 class="display-4 fw-bold mb-3">FAQ</h1>
+                <p class="lead text-body-secondary">Najczęściej zadawane pytania</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="content-card">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10">
+                        <div class="accordion faq-accordion" id="faqAccordion">
+                            <!-- FAQ Item 1 -->
+                            <div class="accordion-item faq-item mb-3">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button faq-button collapsed" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#faq1" aria-expanded="false"
+                                        aria-controls="faq1">
+                                        <span class="faq-icon me-3">📦</span>
+                                        Jakie artykuły muszę zapewnić dziecku w tzw. "wyprawce"?
+                                    </button>
+                                </h2>
+                                <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        <p>Aby Maluszek poczuł się u nas dobrze, wspaniale jeśli będzie miał do swojej
+                                            dyspozycji:</p>
+
+                                        <h6 class="fw-bold mt-3 mb-2">ARTYKUŁY HIGIENICZNE:</h6>
+                                        <ul>
+                                            <li>Szczoteczka, kubek, pasta do zębów (odpowiednie do wieku)</li>
+                                            <li>Grzebień lub szczotka do włosów</li>
+                                            <li>Pieluszki</li>
+                                            <li>Mokre chusteczki</li>
+                                            <li>Krem przeciw odparzeniom</li>
+                                            <li>Krem do twarzy</li>
+                                            <li>Butelka ze smoczkiem, bidon z rurką, kubek niekapek (wedle uznania)</li>
+                                            <li>Smoczek w podpisanym pudełeczku (jeśli dziecko używa)</li>
+                                        </ul>
+
+                                        <h6 class="fw-bold mt-3 mb-2">LEŻAKOWANIE:</h6>
+                                        <ul>
+                                            <li>Piżamka</li>
+                                            <li>Kołderka lub kocyk obleczone w poszwę</li>
+                                            <li>Poduszka z poszewką</li>
+                                            <li>Prześcieradło z gumką o wymiarach 60cm x 120cm</li>
+                                        </ul>
+
+                                        <h6 class="fw-bold mt-3 mb-2">RZECZY NA ZMIANĘ:</h6>
+                                        <ul>
+                                            <li>Pantofelki na rzepę lub zatrzask z antypoślizgową podeszwą</li>
+                                            <li>Worek na pobrudzone ubranko</li>
+                                            <li>Ubranka na zmianę – podwójnie każda część garderoby</li>
+                                            <li>Zestaw ubrań „do zabrudzenia", którego nie będzie Państwu szkoda po
+                                                twórczej zabawie z farbami, barwnikami, piaskiem etc.</li>
+                                        </ul>
+
+                                        <h6 class="fw-bold mt-3 mb-2">UBRANIA DO ZABAWY NA ŚWIEŻYM POWIETRZU:</h6>
+                                        <ul>
+                                            <li><strong>Chłodne dni:</strong> nieprzemakalna kurteczka z kapturem,
+                                                czapka, kalosze</li>
+                                            <li><strong>Zimą:</strong> kurtka zimowa, nieprzemakalne spodnie i buty,
+                                                czapka, szalik, rękawiczki, polar</li>
+                                            <li><strong>W ciepłe dni:</strong> nakrycie głowy (czapka z daszkiem,
+                                                kapelusz, chusteczka)</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- FAQ Item 2 -->
+                            <div class="accordion-item faq-item mb-3">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button faq-button collapsed" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#faq2" aria-expanded="false"
+                                        aria-controls="faq2">
+                                        <span class="faq-icon me-3">🍼</span>
+                                        Czy powinnam odsmoczkować dziecko przed żłobkiem?
+                                    </button>
+                                </h2>
+                                <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        <p>Absolutnie nie! Kontakt karmiącej mamy z maluchem jest nie tylko
+                                            zaspokajaniem potrzeb fizjologicznych, takich jak głód, ale w znacznym
+                                            stopniu zapewnia wsparcie emocjonalne. Obu stronom. Rodzice równie mocno jak
+                                            ich dzieci, przeżywają żłobkową przygodę. Nie blokujmy w sobie tych emocji.
+                                            Są trudne, ale nie ma w nich niczego złego. Dajcie sobie czas na spokojny
+                                            rozwój sytuacji, a może się okazać, że maluch sam zadecyduje, że czas
+                                            zakończyć mleczną drogę. Jeżeli taką decyzję podejmuje mama, warto pamiętać,
+                                            że ma do tego prawo.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- FAQ Item 3 -->
+                            <div class="accordion-item faq-item mb-3">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button faq-button collapsed" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#faq3" aria-expanded="false"
+                                        aria-controls="faq3">
+                                        <span class="faq-icon me-3">🤱</span>
+                                        Czy powinnam odstawić dziecko od piersi przed żłobkiem?
+                                    </button>
+                                </h2>
+                                <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        <p>Absolutnie nie! Kontakt karmiącej mamy z maluchem jest nie tylko
+                                            zaspokajaniem potrzeb fizjologicznych, takich jak głód, ale w znacznym
+                                            stopniu zapewnia wsparcie emocjonalne. Obu stronom. Rodzice równie mocno
+                                            przeżywają żłobkową przygodę jak dzieci. Nie wyzbywajmy się tych emocji. Nie
+                                            ma w nich niczego złego. Dajcie sobie czas na spokojny rozwój sytuacji, a
+                                            może się okazać, że maluch sam zadecyduje, że czas zakończyć mleczną drogę.
+                                            Jeżeli taką decyzję podejmuje mama, warto pamiętać, że ma do tego prawo.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- FAQ Item 4 -->
+                            <div class="accordion-item faq-item mb-3">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button faq-button collapsed" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#faq4" aria-expanded="false"
+                                        aria-controls="faq4">
+                                        <span class="faq-icon me-3">🤗</span>
+                                        Nie chcę aby ktoś nosił i przytulał moje dziecko.
+                                    </button>
+                                </h2>
+                                <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        <p>W Serduszku noszenie i przytulanie jest stałym elementem opieki nad dziećmi.
+                                            Dla niektórych rodziców zagadnienie to bywa kłopotliwe. Warto zastanowić się
+                                            z czego wynika niechęć do przytulania mojego dziecka przez kogoś obcego.
+                                            Ciocie w żłobku nigdy nie zastąpią mamy, a częste noszenie nie sprawi, że
+                                            dziecko "przyzwyczai" się do noszenia. Jeśli w domu będą zdarzać się
+                                            sytuacje, że chce na rączki lub nie opuszcza mamy choćby na krok, warto
+                                            wrzucić tryb spokoju i bycia obok. Nowe sytuacje w życiu maluszka będą
+                                            łatwiejsze, jeśli mama będzie zachowywać się tak jak wcześniej - czyli mimo,
+                                            że chodzę do dzieci, czy bawię się z ciociami, dla mamy nadal jestem bardzo
+                                            ważny!</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- FAQ Item 5 -->
+                            <div class="accordion-item faq-item mb-3">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button faq-button collapsed" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#faq5" aria-expanded="false"
+                                        aria-controls="faq5">
+                                        <span class="faq-icon me-3">🍽️</span>
+                                        Jakie posiłki są serwowane dzieciom?
+                                    </button>
+                                </h2>
+                                <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                    <div class="accordion-body">
+                                        <p>Posiłki przywozi do żłobka firma cateringowa <a
+                                                href="https://www.twojezdrowko.pl/" target="_blank"
+                                                class="fw-semibold">"Twoje Zdrówko"</a>, która gotuje smaczne
+                                            zróżnicowane posiłki. Istnieje możliwość zamawiania diety wykluczającej
+                                            alergen - laktozę, bmk, orzechy, itd. Rodzice mogą dostarczać dodatkowe
+                                            posiłki swoim dzieciom, na wypadek, gdyby kucharz w danym dniu nie trafił
+                                            przez żołądek do serca naszych Maluszków.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-4 border-top">
+        <div class="container d-flex flex-column flex-md-row align-items-center justify-content-between gap-2">
+            <div class="small text-body-secondary">© <span id="year"></span> Żłobek Serduszko</div>
+            <div class="d-flex gap-3 small">
+                <a href="o-nas.html" class="link-secondary">O nas</a>
+                <a href="index.html#oferta" class="link-secondary">Oferta</a>
+                <a href="index.html#placowki" class="link-secondary">Placówki</a>
+                <a href="index.html#kontakt" class="link-secondary">Kontakt</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="translations.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Funkcja naprawy wiszących spójników i kwot
+        function fixOrphans() {
+            const textNodes = [];
+            const walker = document.createTreeWalker(
+                document.body,
+                NodeFilter.SHOW_TEXT,
+                null,
+                false
+            );
+
+            let node;
+            while (node = walker.nextNode()) {
+                if (node.textContent.trim().length > 0) {
+                    textNodes.push(node);
+                }
+            }
+
+            textNodes.forEach(node => {
+                let text = node.textContent;
+
+                // Napraw wiszące spójniki i krótkie słowa (1-3 litery)
+                text = text.replace(/\s+([aiouwz]|do|na|we|ze|od|po|za|by|czy|lub|albo|oraz|ale|lecz|czy)\s+/gi, '\u00A0$1\u00A0');
+
+                // Napraw kwoty - nie pozwól na przełamanie przed jednostką
+                text = text.replace(/(\d+(?:[,.]\d+)?)\s+(zł|złoty|złote|złotych|gr|groszy|grosz|%|proc\.)/gi, '$1\u00A0$2');
+
+                // Napraw liczby z jednostkami
+                text = text.replace(/(\d+)\s+(cm|mm|m|km|kg|g|godz\.|godzin|minut|dni|lat|roku|miesięcy)/gi, '$1\u00A0$2');
+
+                // Napraw skróty i tytuły
+                text = text.replace(/\s+(tel\.|ul\.|nr|mgr|dr|prof\.)\s+/gi, '\u00A0$1\u00A0');
+
+                // Napraw żeby nie było samego "x" na końcu linii  
+                text = text.replace(/\s+x\s+/gi, '\u00A0x\u00A0');
+
+                // Napraw pojedyncze litery na końcu
+                text = text.replace(/\s+([a-zA-Z])\s+/g, '\u00A0$1\u00A0');
+
+                if (text !== node.textContent) {
+                    node.textContent = text;
+                }
+            });
+        }
+
+        // Uruchom po załadowaniu strony
+        document.addEventListener('DOMContentLoaded', fixOrphans);
+
+        // Uruchom ponownie po zmianach w DOM (np. accordion)
+        const observer = new MutationObserver(() => {
+            setTimeout(fixOrphans, 100);
+        });
+
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true,
+            characterData: true
+        });
+    </script>
+</body>
+
+</html>

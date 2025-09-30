@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="pl">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Pliki do pobrania - Żłobek Serduszko</title>
+    <meta name="description" content="Przydatne dokumenty i pliki do pobrania dla rodziców dzieci w Żłobku Serduszko.">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/o-nas.css" rel="stylesheet">
+    <link rel="icon" type="image/webp" href="assets/img/logo.webp">
+    <style>
+        .download-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(157, 222, 32, 0.2);
+            border-radius: 16px;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .download-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, rgba(157, 222, 32, 0.15), rgba(157, 222, 32, 0.05));
+            border-radius: 0 16px 0 100%;
+            z-index: 0;
+        }
+
+        .download-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(157, 222, 32, 0.15);
+            border-color: rgba(157, 222, 32, 0.3);
+        }
+
+        .download-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-color, #9dde20), #8ac71b);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .download-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .download-description {
+            color: #64748b;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            position: relative;
+            z-index: 2;
+        }
+
+        .download-btn {
+            background: var(--primary-color, #9dde20);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.2s ease;
+            position: relative;
+            z-index: 2;
+        }
+
+        .download-btn:hover {
+            background: #8ac71b;
+            color: white;
+            transform: translateY(-1px);
+        }
+
+        .coming-soon-badge {
+            background: linear-gradient(45deg, #fbbf24, #f59e0b);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            z-index: 3;
+        }
+
+        .info-box {
+            background: rgba(157, 222, 32, 0.1);
+            border: 1px solid rgba(157, 222, 32, 0.2);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .info-icon {
+            color: var(--primary-color, #9dde20);
+            font-size: 1.5rem;
+            margin-right: 0.75rem;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg fixed-top modern-navbar" id="mainNavbar">
+        <div class="container position-relative">
+            <a class="navbar-brand modern-brand" href="index.html">
+                <span class="brand-text">Żłobek</span>
+                <span class="brand-accent">Serduszko</span>
+            </a>
+            <div class="navbar-logo">
+                <img src="assets/img/logo.webp" alt="Żłobek Serduszko" class="logo-img">
+            </div>
+            <button class="navbar-toggler modern-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav"
+                aria-controls="nav" aria-expanded="false" aria-label="Menu">
+                <span class="modern-toggler-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
+            </button>
+            <div class="collapse navbar-collapse" id="nav">
+                <ul class="navbar-nav ms-auto align-items-lg-center">
+                    <li class="nav-item"><a class="nav-link modern-nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link modern-nav-link" href="o-nas.html">O nas</a></li>
+                    <li class="nav-item"><a class="nav-link modern-nav-link" href="index.html#placowki">Placówki</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link modern-nav-link dropdown-toggle active" href="#" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Inne
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="faq.html">FAQ</a></li>
+                            <li><a class="dropdown-item" href="cennik.html">Cennik</a></li>
+                            <li><a class="dropdown-item" href="plan-dnia.html">Plan dnia</a></li>
+                            <li><a class="dropdown-item active" href="pliki.html">Pliki do pobrania</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item ms-lg-3">
+                        <a class="btn modern-contact-btn" href="index.html#kontakt">
+                            <span class="btn-text">Kontakt</span>
+                            <span class="btn-icon">→</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero section -->
+    <section class="hero-simple py-5 mt-5">
+        <div class="container">
+            <div class="text-center">
+                <h1 class="display-4 fw-bold mb-3">Pliki do pobrania</h1>
+                <p class="lead text-body-secondary">Przydatne dokumenty i formularze</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Downloads Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="content-card">
+                <!-- Info Box -->
+                <div class="info-box">
+                    <div class="d-flex align-items-start">
+                        <div class="info-icon">ℹ️</div>
+                        <div>
+                            <h6 class="fw-bold mb-2" style="color: var(--primary-color, #9dde20);">Informacja</h6>
+                            <p class="mb-0">Wszystkie dokumenty są w formacie PDF. Aby je otworzyć, potrzebujesz
+                                programu do odczytu plików PDF (np. Adobe Reader). W przypadku problemów z pobraniem,
+                                skontaktuj się z nami.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <!-- Regulamin -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="download-card">
+                            <div class="download-icon">📋</div>
+                            <h3 class="download-title">Regulamin żłobka</h3>
+                            <p class="download-description">Pełny regulamin funkcjonowania Żłobka Serduszko z zasadami i
+                                procedurami.</p>
+                            <div class="coming-soon-badge">Wkrótce</div>
+                        </div>
+                    </div>
+
+                    <!-- Formularz zapisów -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="download-card">
+                            <div class="download-icon">📝</div>
+                            <h3 class="download-title">Formularz zapisów</h3>
+                            <p class="download-description">Formularz zgłoszeniowy dla rodziców chcących zapisać dziecko
+                                do żłobka.</p>
+                            <div class="coming-soon-badge">Wkrótce</div>
+                        </div>
+                    </div>
+
+                    <!-- Karta dziecka -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="download-card">
+                            <div class="download-icon">👶</div>
+                            <h3 class="download-title">Karta dziecka</h3>
+                            <p class="download-description">Formularz z informacjami o dziecku, jego potrzebach i
+                                preferencjach.</p>
+                            <div class="coming-soon-badge">Wkrótce</div>
+                        </div>
+                    </div>
+
+                    <!-- Zaświadczenie lekarskie -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="download-card">
+                            <div class="download-icon">🏥</div>
+                            <h3 class="download-title">Wzór zaświadczenia lekarskiego</h3>
+                            <p class="download-description">Wzór zaświadczenia lekarskiego wymaganego przy zapisie
+                                dziecka do żłobka.</p>
+                            <div class="coming-soon-badge">Wkrótce</div>
+                        </div>
+                    </div>
+
+                    <!-- Umowa -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="download-card">
+                            <div class="download-icon">📄</div>
+                            <h3 class="download-title">Wzór umowy</h3>
+                            <p class="download-description">Przykładowa umowa na świadczenie usług opiekuńczych w
+                                żłobku.</p>
+                            <div class="coming-soon-badge">Wkrótce</div>
+                        </div>
+                    </div>
+
+                    <!-- Lista wyprawki -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="download-card">
+                            <div class="download-icon">🎒</div>
+                            <h3 class="download-title">Lista wyprawki</h3>
+                            <p class="download-description">Szczegółowa lista rzeczy potrzebnych dla dziecka w żłobku.
+                            </p>
+                            <div class="coming-soon-badge">Wkrótce</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Information -->
+                <div class="mt-5 p-4 rounded-3"
+                    style="background: rgba(157, 222, 32, 0.1); border: 1px solid rgba(157, 222, 32, 0.2);">
+                    <div class="row align-items-center">
+                        <div class="col-md-8">
+                            <h5 class="mb-2 fw-bold" style="color: var(--primary-color, #9dde20);">Potrzebujesz pomocy?
+                            </h5>
+                            <p class="mb-0 text-muted">Jeśli masz problemy z pobraniem dokumentów lub potrzebujesz
+                                dodatkowych informacji, skontaktuj się z nami.</p>
+                        </div>
+                        <div class="col-md-4 text-md-end mt-3 mt-md-0">
+                            <a href="index.html#kontakt" class="btn"
+                                style="background: var(--primary-color, #9dde20); color: white; border: none; font-weight: 600;">
+                                Skontaktuj się
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-4 border-top">
+        <div class="container d-flex flex-column flex-md-row align-items-center justify-content-between gap-2">
+            <div class="small text-body-secondary">© <span id="year"></span> Żłobek Serduszko</div>
+            <div class="d-flex gap-3 small">
+                <a href="o-nas.html" class="link-secondary">O nas</a>
+                <a href="index.html#oferta" class="link-secondary">Oferta</a>
+                <a href="index.html#placowki" class="link-secondary">Placówki</a>
+                <a href="index.html#kontakt" class="link-secondary">Kontakt</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Funkcja naprawy wiszących spójników i kwot
+        function fixOrphans() {
+            const textNodes = [];
+            const walker = document.createTreeWalker(
+                document.body,
+                NodeFilter.SHOW_TEXT,
+                null,
+                false
+            );
+
+            let node;
+            while (node = walker.nextNode()) {
+                if (node.textContent.trim().length > 0) {
+                    textNodes.push(node);
+                }
+            }
+
+            textNodes.forEach(node => {
+                let text = node.textContent;
+
+                // Napraw wiszące spójniki i krótkie słowa (1-3 litery)
+                text = text.replace(/\s+([aiouwz]|do|na|we|ze|od|po|za|by|czy|lub|albo|oraz|ale|lecz|czy)\s+/gi, '\u00A0$1\u00A0');
+
+                // Napraw kwoty - nie pozwól na przełamanie przed jednostką
+                text = text.replace(/(\d+(?:[,.]\d+)?)\s+(zł|złoty|złote|złotych|gr|groszy|grosz|%|proc\.)/gi, '$1\u00A0$2');
+
+                // Napraw liczby z jednostkami
+                text = text.replace(/(\d+)\s+(cm|mm|m|km|kg|g|godz\.|godzin|minut|dni|lat|roku|miesięcy)/gi, '$1\u00A0$2');
+
+                // Napraw skróty i tytuły
+                text = text.replace(/\s+(tel\.|ul\.|nr|mgr|dr|prof\.)\s+/gi, '\u00A0$1\u00A0');
+
+                // Napraw żeby nie było samego "x" na końcu linii  
+                text = text.replace(/\s+x\s+/gi, '\u00A0x\u00A0');
+
+                // Napraw pojedyncze litery na końcu
+                text = text.replace(/\s+([a-zA-Z])\s+/g, '\u00A0$1\u00A0');
+
+                if (text !== node.textContent) {
+                    node.textContent = text;
+                }
+            });
+        }
+
+        // Uruchom po załadowaniu strony
+        document.addEventListener('DOMContentLoaded', fixOrphans);
+    </script>
+</body>
+
+</html>

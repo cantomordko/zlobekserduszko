@@ -1,0 +1,444 @@
+<!doctype html>
+<html lang="pl">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Plan dnia - Żłobek Serduszko</title>
+    <meta name="description" content="Plan dnia w Żłobku Serduszko - harmonogram zajęć i aktivności dla dzieci.">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/o-nas.css" rel="stylesheet">
+    <link rel="icon" type="image/webp" href="assets/img/logo.webp">
+    <style>
+        .timeline-container {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, var(--primary-color, #9dde20), #8ac71b);
+            transform: translateX(-50%);
+            border-radius: 2px;
+            z-index: 1;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2.5rem;
+            padding: 0 3rem;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: 0;
+            margin-right: 54%;
+            padding-right: 3rem;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: 54%;
+            margin-right: 0;
+            padding-left: 3rem;
+            text-align: left;
+        }
+
+        .timeline-content {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(157, 222, 32, 0.2);
+            border-radius: 16px;
+            padding: 1.5rem;
+            position: relative;
+            transition: all 0.3s ease;
+            z-index: 2;
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(157, 222, 32, 0.15);
+            border-color: rgba(157, 222, 32, 0.3);
+        }
+
+        .timeline-time {
+            background: var(--primary-color, #9dde20);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-activity {
+            color: #2c3e50;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .timeline-icon {
+            position: absolute;
+            left: 50%;
+            top: 1.5rem;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-color, #9dde20), #8ac71b);
+            border: 4px solid white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            transform: translateX(-50%);
+            z-index: 10;
+            box-shadow: 0 4px 15px rgba(157, 222, 32, 0.3);
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .timeline-line {
+                left: 30px;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-content,
+            .timeline-item:nth-child(even) .timeline-content {
+                margin-left: 90px;
+                margin-right: 0;
+                padding-left: 1rem;
+                padding-right: 1rem;
+                text-align: left;
+            }
+
+            .timeline-icon {
+                left: 30px;
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+
+            .timeline-item {
+                padding: 0 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg fixed-top modern-navbar" id="mainNavbar">
+        <div class="container position-relative">
+            <a class="navbar-brand modern-brand" href="index.html">
+                <span class="brand-text">Żłobek</span>
+                <span class="brand-accent">Serduszko</span>
+            </a>
+            <div class="navbar-logo">
+                <img src="assets/img/logo.webp" alt="Żłobek Serduszko" class="logo-img">
+            </div>
+            <button class="navbar-toggler modern-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav"
+                aria-controls="nav" aria-expanded="false" aria-label="Menu">
+                <span class="modern-toggler-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
+            </button>
+            <div class="collapse navbar-collapse" id="nav">
+                <ul class="navbar-nav ms-auto align-items-lg-center">
+                    <li class="nav-item"><a class="nav-link modern-nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link modern-nav-link" href="o-nas.html">O nas</a></li>
+                    <li class="nav-item"><a class="nav-link modern-nav-link" href="index.html#placowki">Placówki</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link modern-nav-link dropdown-toggle active" href="#" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Inne
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="faq.html">FAQ</a></li>
+                            <li><a class="dropdown-item" href="cennik.html">Cennik</a></li>
+                            <li><a class="dropdown-item active" href="plan-dnia.html">Plan dnia</a></li>
+                            <li><a class="dropdown-item" href="pliki.html">Pliki do pobrania</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item ms-lg-3">
+                        <a class="btn modern-contact-btn" href="index.html#kontakt">
+                            <span class="btn-text">Kontakt</span>
+                            <span class="btn-icon">→</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero section -->
+    <section class="hero-simple py-5 mt-5">
+        <div class="container">
+            <div class="text-center">
+                <h1 class="display-4 fw-bold mb-3">Plan dnia</h1>
+                <p class="lead text-body-secondary">Harmonogram dnia w Żłobku Serduszko</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Plan dnia Timeline -->
+    <section class="py-5">
+        <div class="container">
+            <div class="content-card">
+                <div class="text-center mb-5">
+                    <h2 class="h3 fw-bold mb-3" style="color: var(--primary-color, #9dde20);">Jak wygląda dzień w naszym
+                        żłobku?</h2>
+                    <p class="text-muted">Każdy dzień jest starannie zaplanowany, aby zapewnić dzieciom optymalne
+                        warunki rozwoju, zabawy i odpoczynku.</p>
+                </div>
+
+                <div class="timeline-container">
+                    <div class="timeline-line"></div>
+
+                    <!-- 7:00-8:00 -->
+                    <div class="timeline-item">
+                        <div class="timeline-icon">🌅</div>
+                        <div class="timeline-content">
+                            <div class="timeline-time">7:00 - 8:00</div>
+                            <p class="timeline-activity">Przyjmowanie dzieci do żłobka, zabawy poranne</p>
+                        </div>
+                    </div>
+
+                    <!-- 8:00-8:30 -->
+                    <div class="timeline-item">
+                        <div class="timeline-icon">🧼</div>
+                        <div class="timeline-content">
+                            <div class="timeline-time">8:00 - 8:30</div>
+                            <p class="timeline-activity">Mycie rączek, przygotowanie do śniadania, śniadanie</p>
+                        </div>
+                    </div>
+
+                    <!-- 8:30-8:50 -->
+                    <div class="timeline-item">
+                        <div class="timeline-icon">🍽️</div>
+                        <div class="timeline-content">
+                            <div class="timeline-time">8:30 - 8:50</div>
+                            <p class="timeline-activity">Śniadanie, mycie zębów</p>
+                        </div>
+                    </div>
+
+                    <!-- 8:50-9:15 -->
+                    <div class="timeline-item">
+                        <div class="timeline-icon">🚿</div>
+                        <div class="timeline-content">
+                            <div class="timeline-time">8:50 - 9:15</div>
+                            <p class="timeline-activity">Czynności higieniczne</p>
+                        </div>
+                    </div>
+
+                    <!-- 9:15-9:35 -->
+                    <div class="timeline-item">
+                        <div class="timeline-icon">📚</div>
+                        <div class="timeline-content">
+                            <div class="timeline-time">9:15 - 9:35</div>
+                            <p class="timeline-activity">Zajęcia edukacyjne</p>
+                        </div>
+                    </div>
+
+                    <!-- 9:35-10:00 -->
+                    <div class="timeline-item">
+                        <div class="timeline-icon">🎮</div>
+                        <div class="timeline-content">
+                            <div class="timeline-time">9:35 - 10:00</div>
+                            <p class="timeline-activity">Zabawy swobodne, przygotowanie do II śniadania</p>
+                        </div>
+                    </div>
+
+                    <!-- 10:00-10:30 -->
+                    <div class="timeline-item">
+                        <div class="timeline-icon">🥐</div>
+                        <div class="timeline-content">
+                            <div class="timeline-time">10:00 - 10:30</div>
+                            <p class="timeline-activity">II śniadanie, mycie zębów</p>
+                        </div>
+                    </div>
+
+                    <!-- 10:30-11:20 -->
+                    <div class="timeline-item">
+                        <div class="timeline-icon">🚶</div>
+                        <div class="timeline-content">
+                            <div class="timeline-time">10:30 - 11:20</div>
+                            <p class="timeline-activity">Spacer</p>
+                        </div>
+                    </div>
+
+                    <!-- 11:20-11:30 -->
+                    <div class="timeline-item">
+                        <div class="timeline-icon">✋</div>
+                        <div class="timeline-content">
+                            <div class="timeline-time">11:20 - 11:30</div>
+                            <p class="timeline-activity">Mycie rączek</p>
+                        </div>
+                    </div>
+
+                    <!-- 11:30 -->
+                    <div class="timeline-item">
+                        <div class="timeline-icon">🍲</div>
+                        <div class="timeline-content">
+                            <div class="timeline-time">11:30</div>
+                            <p class="timeline-activity">Zupa, mycie zębów</p>
+                        </div>
+                    </div>
+
+                    <!-- 11:50-14:00 -->
+                    <div class="timeline-item">
+                        <div class="timeline-icon">😴</div>
+                        <div class="timeline-content">
+                            <div class="timeline-time">11:50 - 14:00</div>
+                            <p class="timeline-activity">Czynności higieniczne, przygotowanie do drzemki, drzemka</p>
+                        </div>
+                    </div>
+
+                    <!-- 14:00-14:20 -->
+                    <div class="timeline-item">
+                        <div class="timeline-icon">🍖</div>
+                        <div class="timeline-content">
+                            <div class="timeline-time">14:00 - 14:20</div>
+                            <p class="timeline-activity">II danie</p>
+                        </div>
+                    </div>
+
+                    <!-- 14:20-15:00 -->
+                    <div class="timeline-item">
+                        <div class="timeline-icon">🎭</div>
+                        <div class="timeline-content">
+                            <div class="timeline-time">14:20 - 15:00</div>
+                            <p class="timeline-activity">Zabawa swobodna</p>
+                        </div>
+                    </div>
+
+                    <!-- 15:00-15:15 -->
+                    <div class="timeline-item">
+                        <div class="timeline-icon">🎯</div>
+                        <div class="timeline-content">
+                            <div class="timeline-time">15:00 - 15:15</div>
+                            <p class="timeline-activity">Zabawy zorganizowane na dywanie</p>
+                        </div>
+                    </div>
+
+                    <!-- 15:15-15:30 -->
+                    <div class="timeline-item">
+                        <div class="timeline-icon">🧴</div>
+                        <div class="timeline-content">
+                            <div class="timeline-time">15:15 - 15:30</div>
+                            <p class="timeline-activity">Czynności higieniczne</p>
+                        </div>
+                    </div>
+
+                    <!-- 15:30-15:50 -->
+                    <div class="timeline-item">
+                        <div class="timeline-icon">🧁</div>
+                        <div class="timeline-content">
+                            <div class="timeline-time">15:30 - 15:50</div>
+                            <p class="timeline-activity">Podwieczorek</p>
+                        </div>
+                    </div>
+
+                    <!-- 15:50-17:30 -->
+                    <div class="timeline-item">
+                        <div class="timeline-icon">👋</div>
+                        <div class="timeline-content">
+                            <div class="timeline-time">15:50 - 17:30</div>
+                            <p class="timeline-activity">Zabawy, odbiór dzieci</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Informacja dodatkowa -->
+                <div class="mt-5 p-4 rounded-3"
+                    style="background: rgba(157, 222, 32, 0.1); border: 1px solid rgba(157, 222, 32, 0.2);">
+                    <div class="row align-items-center">
+                        <div class="col-md-8">
+                            <h5 class="mb-2 fw-bold" style="color: var(--primary-color, #9dde20);">Masz pytania o plan
+                                dnia?</h5>
+                            <p class="mb-0 text-muted">Skontaktuj się z nami, aby uzyskać więcej informacji o naszym
+                                harmonogramie i zajęciach.</p>
+                        </div>
+                        <div class="col-md-4 text-md-end mt-3 mt-md-0">
+                            <a href="index.html#kontakt" class="btn"
+                                style="background: var(--primary-color, #9dde20); color: white; border: none; font-weight: 600;">
+                                Skontaktuj się
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-4 border-top">
+        <div class="container d-flex flex-column flex-md-row align-items-center justify-content-between gap-2">
+            <div class="small text-body-secondary">© <span id="year"></span> Żłobek Serduszko</div>
+            <div class="d-flex gap-3 small">
+                <a href="o-nas.html" class="link-secondary">O nas</a>
+                <a href="index.html#placowki" class="link-secondary">Placówki</a>
+                <a href="index.html#kontakt" class="link-secondary">Kontakt</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        // Funkcja naprawy wiszących spójników i kwot
+        function fixOrphans() {
+            const textNodes = [];
+            const walker = document.createTreeWalker(
+                document.body,
+                NodeFilter.SHOW_TEXT,
+                null,
+                false
+            );
+
+            let node;
+            while (node = walker.nextNode()) {
+                if (node.textContent.trim().length > 0) {
+                    textNodes.push(node);
+                }
+            }
+
+            textNodes.forEach(node => {
+                let text = node.textContent;
+
+                // Napraw wiszące spójniki i krótkie słowa (1-3 litery)
+                text = text.replace(/\s+([aiouwz]|do|na|we|ze|od|po|za|by|czy|lub|albo|oraz|ale|lecz|czy)\s+/gi, '\u00A0$1\u00A0');
+
+                // Napraw kwoty - nie pozwól na przełamanie przed jednostką
+                text = text.replace(/(\d+(?:[,.]\d+)?)\s+(zł|złoty|złote|złotych|gr|groszy|grosz|%|proc\.)/gi, '$1\u00A0$2');
+
+                // Napraw liczby z jednostkami
+                text = text.replace(/(\d+)\s+(cm|mm|m|km|kg|g|godz\.|godzin|minut|dni|lat|roku|miesięcy)/gi, '$1\u00A0$2');
+
+                // Napraw skróty i tytuły
+                text = text.replace(/\s+(tel\.|ul\.|nr|mgr|dr|prof\.)\s+/gi, '\u00A0$1\u00A0');
+
+                // Napraw żeby nie było samego "x" na końcu linii  
+                text = text.replace(/\s+x\s+/gi, '\u00A0x\u00A0');
+
+                // Napraw pojedyncze litery na końcu
+                text = text.replace(/\s+([a-zA-Z])\s+/g, '\u00A0$1\u00A0');
+
+                if (text !== node.textContent) {
+                    node.textContent = text;
+                }
+            });
+        }
+
+        // Uruchom po załadowaniu strony
+        document.addEventListener('DOMContentLoaded', fixOrphans);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" aria-label="Łapka psa">
+	<!-- Biała łapka; palce lekko bardziej rozstawione dla lepszej czytelności -->
+		<ellipse cx="6.9" cy="8.6" rx="1.6" ry="2.3" fill="#fff"/>
+		<ellipse cx="10.4" cy="7.1" rx="1.6" ry="2.6" fill="#fff"/>
+		<ellipse cx="13.6" cy="7.1" rx="1.6" ry="2.6" fill="#fff"/>
+		<ellipse cx="17.1" cy="8.6" rx="1.6" ry="2.3" fill="#fff"/>
+	<path d="M12 12.8c-3.1 0-5.6 2.3-5.6 4.8 0 1.9 1.8 3.4 5.6 3.4s5.6-1.5 5.6-3.4c0-2.5-2.5-4.8-5.6-4.8z" fill="#fff"/>
+</svg>

@@ -1,0 +1,542 @@
+<!doctype html>
+<html lang="pl">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Żłobek Serduszko</title>
+    <meta name="description" content="Żłobek Serduszko — bezpieczna i ciepła opieka dla najmłodszych.">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="preload" as="image" href="assets/img/img1.webp">
+    <link rel="icon" type="image/webp" href="assets/img/logo.webp">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg fixed-top modern-navbar" id="mainNavbar">
+        <div class="container position-relative">
+            <a class="navbar-brand modern-brand" href="#">
+                <span class="brand-text">Żłobek</span>
+                <span class="brand-accent">Serduszko</span>
+            </a>
+            <div class="navbar-logo">
+                <img src="assets/img/logo.webp" alt="Żłobek Serduszko" class="logo-img">
+            </div>
+            <button class="navbar-toggler modern-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav"
+                aria-controls="nav" aria-expanded="false" aria-label="Menu">
+                <span class="modern-toggler-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
+            </button>
+            <div class="collapse navbar-collapse" id="nav">
+                <ul class="navbar-nav ms-auto align-items-lg-center">
+                    <li class="nav-item"><a class="nav-link modern-nav-link active" href="index.html"
+                            data-translate="home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link modern-nav-link" href="o-nas.html"
+                            data-translate="aboutUs">O nas</a></li>
+                    <li class="nav-item"><a class="nav-link modern-nav-link" href="#placowki"
+                            data-translate="locations">Placówki</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link modern-nav-link dropdown-toggle" href="#" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false" data-translate="other">
+                            Inne
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="faq.html">FAQ</a></li>
+                            <li><a class="dropdown-item" href="cennik.html">Cennik</a></li>
+                            <li><a class="dropdown-item" href="plan-dnia.html">Plan dnia</a></li>
+                            <li><a class="dropdown-item" href="pliki.html">Pliki do pobrania</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item ms-lg-3">
+                        <a class="btn modern-contact-btn" href="#kontakt">
+                            <span class="btn-text">Kontakt</span>
+                            <span class="btn-icon">→</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero d-flex align-items-center text-center text-lg-start">
+        <div class="container">
+            <div class="row align-items-center g-4">
+                <div class="col-lg-6">
+                    <h1 class="display-5 fw-bold mb-3">Miejsce tworzone z sercem</h1>
+                    <p class="lead text-body-secondary mb-4">Bezpieczna opieka,
+                        kameralna atmosfera i codzienna dawka
+                        uśmiechu dla Twojego dziecka.</p>
+                    <div class="d-flex gap-2 justify-content-center justify-content-lg-start">
+                        <a href="tel:+48123456789" class="btn btn-primary btn-lg">Zadzwoń</a>
+                        <a href="#kontakt" class="btn btn-outline-primary btn-lg">Napisz do nas</a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="ratio ratio-4x3 rounded-4 overflow-hidden shadow-sm">
+                        <img src="assets/img/img1.webp" alt="Żłobek Serduszko — sala zabaw"
+                            class="w-100 h-100 object-fit-cover">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+
+    <section id="oferta" class="py-5 bg-light">
+        <div class="container">
+            <div class="d-flex flex-column flex-md-row align-items-md-end justify-content-between mb-4">
+                <h2 class="h1 fw-semibold mb-2 mb-md-0">Oferta</h2>
+                <a href="#kontakt" class="btn btn-outline-primary btn-sm">Zapytaj o dostępność</a>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm rounded-4">
+                        <div class="card-body p-4">
+                            <h3 class="h5 mb-2">Małe grupy</h3>
+                            <p class="mb-0 text-body-secondary">Indywidualne podejście i bliski kontakt z opiekunem w
+                                kameralnych grupach.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm rounded-4">
+                        <div class="card-body p-4">
+                            <h3 class="h5 mb-2">Zdrowe posiłki</h3>
+                            <p class="mb-0 text-body-secondary">Zbilansowane menu dopasowane do wieku i potrzeb dzieci.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm rounded-4">
+                        <div class="card-body p-4">
+                            <h3 class="h5 mb-2">Zajęcia rozwojowe</h3>
+                            <p class="mb-0 text-body-secondary">Rytmika, sensoryka i codzienna kreatywna zabawa
+                                wspierająca rozwój.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="placowki" class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="h1 fw-semibold mb-3">Nasze placówki</h2>
+                <p class="lead text-body-secondary">Znajdź najbliższą placówkę i skontaktuj się z nami</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="location-card-main">
+                        <div class="location-badge">nr 1</div>
+                        <div class="location-heart-main">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5 2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z" />
+                            </svg>
+                        </div>
+                        <div class="location-content">
+                            <h3 class="location-title">Serduszko nr 1</h3>
+                            <div class="location-details">
+                                <div class="detail-item">
+                                    <strong>Adres:</strong> <a href="https://maps.google.com/?q=os.+Kombatantów+6"
+                                        target="_blank" class="text-decoration-none">os. Kombatantów 6</a>
+                                </div>
+                                <div class="detail-item">
+                                    <strong>Kierownik:</strong> Katarzyna Mruk
+                                </div>
+                                <div class="detail-item">
+                                    <strong>Telefon:</strong> <a href="tel:+48530380849">+48 530 380 849</a>
+                                </div>
+                                <div class="detail-item">
+                                    <strong>Email:</strong> <a
+                                        href="mailto:katarzynamrukserduszko@interia.pl">katarzynamrukserduszko@interia.pl</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="location-card-main">
+                        <div class="location-badge">nr 2</div>
+                        <div class="location-heart-main">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5 2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z" />
+                            </svg>
+                        </div>
+                        <div class="location-content">
+                            <h3 class="location-title">Serduszko nr 2</h3>
+                            <div class="location-details">
+                                <div class="detail-item">
+                                    <strong>Adres:</strong> <a
+                                        href="https://maps.google.com/?q=os.+2+Pułku+Lotniczego+1" target="_blank"
+                                        class="text-decoration-none">os. 2 Pułku Lotniczego 1</a>
+                                </div>
+                                <div class="detail-item">
+                                    <strong>Kierownik:</strong> mgr Karolina Wlusek
+                                </div>
+                                <div class="detail-item">
+                                    <strong>Telefon:</strong> <a href="tel:+48534693760">+48 534 693 760</a>
+                                </div>
+                                <div class="detail-item">
+                                    <strong>Email:</strong> <a
+                                        href="mailto:karolinazlobekserduszko@gmail.com">karolinazlobekserduszko@gmail.com</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="location-card-main">
+                        <div class="location-badge">nr 3</div>
+                        <div class="location-heart-main">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5 2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z" />
+                            </svg>
+                        </div>
+                        <div class="location-content">
+                            <h3 class="location-title">Serduszko nr 3</h3>
+                            <div class="location-details">
+                                <div class="detail-item">
+                                    <strong>Adres:</strong> <a
+                                        href="https://maps.google.com/?q=ul.+Stanisława+Żółkiewskiego+17+LU"
+                                        target="_blank" class="text-decoration-none">ul. Stanisława Żółkiewskiego
+                                        17/LU</a>
+                                </div>
+                                <div class="detail-item">
+                                    <strong>Kierownik:</strong> mgr Dominika Kapcia
+                                </div>
+                                <div class="detail-item">
+                                    <strong>Telefon:</strong> <a href="tel:+48668256876">+48 668 256 876</a>
+                                </div>
+                                <div class="detail-item">
+                                    <strong>Email:</strong> <a
+                                        href="mailto:dominikakapciaserduszko@gmail.com">dominikakapciaserduszko@gmail.com</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section id="kontakt" class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="h1 fw-semibold mb-3">Kontakt</h2>
+                <p class="lead text-body-secondary">Znajdź najbliższą placówkę i skontaktuj się z nami</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="contact-card">
+                        <div class="contact-header">
+                            <div class="contact-icon">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                                </svg>
+                            </div>
+                            <h3 class="contact-title">Skontaktuj się z nami</h3>
+                            <p class="contact-subtitle">Wypełnij formularz online lub zadzwoń</p>
+                        </div>
+
+                        <div class="contact-actions">
+                            <button type="button" class="btn btn-primary btn-lg w-100 mb-3" data-bs-toggle="modal"
+                                data-bs-target="#contactModal">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" class="me-2">
+                                    <path
+                                        d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z" />
+                                </svg>
+                                Wypełnij formularz online
+                            </button>
+
+
+                            <button type="button" class="btn btn-outline-primary btn-lg w-100" data-bs-toggle="modal"
+                                data-bs-target="#phoneModal">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" class="me-2">
+                                    <path
+                                        d="M6.62,10.79C8.06,13.62 10.38,15.94 13.21,17.38L15.41,15.18C15.69,14.9 16.08,14.82 16.43,14.93C17.55,15.3 18.75,15.5 20,15.5A1,1 0 0,1 21,16.5V20A1,1 0 0,1 20,21A17,17 0 0,1 3,4A1,1 0 0,1 4,3H7.5A1,1 0 0,1 8.5,4C8.5,5.25 8.7,6.45 9.07,7.57C9.18,7.92 9.1,8.31 8.82,8.59L6.62,10.79Z" />
+                                </svg>
+                                Zadzwoń teraz
+                            </button>
+                        </div>
+
+                        <div class="contact-info">
+                            <div class="info-item">
+                                <div class="info-label">Godziny otwarcia</div>
+                                <div class="info-value">Pon–Pt: 7:00–17:00</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="map-container">
+                        <div id="krakow-map"></div>
+                    </div>
+                </div>
+
+                <!-- Modal for Contact Form -->
+                <div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-lg modal-dialog-centered">
+                        <div class="modal-content border-0 shadow-lg">
+                            <div class="modal-header border-0 pb-0">
+                                <h5 class="modal-title fw-semibold" id="contactModalLabel">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"
+                                        class="me-2 text-primary">
+                                        <path
+                                            d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                                    </svg>
+                                    Formularz kontaktowy
+                                </h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Zamknij"></button>
+                            </div>
+                            <div class="modal-body p-0">
+                                <iframe
+                                    src="https://docs.google.com/forms/d/e/1FAIpQLSeCm_b6Jm9iDz-Av9-Iurfh2Of0Og1GBpBND6MToEAb0aIwuA/viewform?embedded=true"
+                                    width="100%" height="650" frameborder="0" marginheight="0" marginwidth="0"
+                                    class="rounded-bottom">
+                                    Ładowanie formularza...
+                                </iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal for Phone Numbers -->
+                <div class="modal fade" id="phoneModal" tabindex="-1" aria-labelledby="phoneModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content border-0 shadow-lg">
+                            <div class="modal-header border-0 pb-2">
+                                <h5 class="modal-title fw-semibold" id="phoneModalLabel">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"
+                                        class="me-2 text-primary">
+                                        <path
+                                            d="M6.62,10.79C8.06,13.62 10.38,15.94 13.21,17.38L15.41,15.18C15.69,14.9 16.08,14.82 16.43,14.93C17.55,15.3 18.75,15.5 20,15.5A1,1 0 0,1 21,16.5V20A1,1 0 0,1 20,21A17,17 0 0,1 3,4A1,1 0 0,1 4,3H7.5A1,1 0 0,1 8.5,4C8.5,5.25 8.7,6.45 9.07,7.57C9.18,7.92 9.1,8.31 8.82,8.59L6.62,10.79Z" />
+                                    </svg>
+                                    Wybierz placówkę
+                                </h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Zamknij"></button>
+                            </div>
+                            <div class="modal-body p-4">
+                                <div class="locations-grid">
+                                    <!-- Placówka 1 -->
+                                    <div class="location-card">
+                                        <div class="location-header">
+                                            <div class="location-heart">
+                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                                    <path
+                                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5 2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z" />
+                                                </svg>
+                                            </div>
+                                            <div class="location-info">
+                                                <h6 class="location-name">"Serduszko" nr 1</h6>
+                                                <p class="location-address"><a
+                                                        href="https://maps.google.com/?q=os.+Kombatantów+6"
+                                                        target="_blank"
+                                                        class="text-decoration-none text-body-secondary">os. Kombatantów
+                                                        6</a><br>Kierownik Żłobka<br>Katarzyna Mruk</p>
+                                            </div>
+                                        </div>
+                                        <div class="location-actions">
+                                            <a href="tel:+48530380849" class="btn btn-primary btn-sm w-100">
+                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"
+                                                    class="me-1">
+                                                    <path
+                                                        d="M6.62,10.79C8.06,13.62 10.38,15.94 13.21,17.38L15.41,15.18C15.69,14.9 16.08,14.82 16.43,14.93C17.55,15.3 18.75,15.5 20,15.5A1,1 0 0,1 21,16.5V20A1,1 0 0,1 20,21A17,17 0 0,1 3,4A1,1 0 0,1 4,3H7.5A1,1 0 0,1 8.5,4C8.5,5.25 8.7,6.45 9.07,7.57C9.18,7.92 9.1,8.31 8.82,8.59L6.62,10.79Z" />
+                                                </svg>
+                                                +48 530 380 849
+                                            </a>
+                                            <a href="mailto:katarzynaamrukserduszko@interia.pl"
+                                                class="btn btn-outline-primary btn-sm w-100 mt-2">
+                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"
+                                                    class="me-1">
+                                                    <path
+                                                        d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                                                </svg>
+                                                Email
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <!-- Placówka 2 -->
+                                    <div class="location-card">
+                                        <div class="location-header">
+                                            <div class="location-heart">
+                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                                    <path
+                                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5 2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z" />
+                                                </svg>
+                                            </div>
+                                            <div class="location-info">
+                                                <h6 class="location-name">"Serduszko" nr 2</h6>
+                                                <p class="location-address"><a
+                                                        href="https://maps.google.com/?q=os.+2+Pułku+Lotniczego+1"
+                                                        target="_blank"
+                                                        class="text-decoration-none text-body-secondary">os. 2 Pułku
+                                                        Lotniczego 1</a><br>Kierownik Żłobka<br>mgr Karolina Wlusek</p>
+                                            </div>
+                                        </div>
+                                        <div class="location-actions">
+                                            <a href="tel:+48534693760" class="btn btn-primary btn-sm w-100">
+                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"
+                                                    class="me-1">
+                                                    <path
+                                                        d="M6.62,10.79C8.06,13.62 10.38,15.94 13.21,17.38L15.41,15.18C15.69,14.9 16.08,14.82 16.43,14.93C17.55,15.3 18.75,15.5 20,15.5A1,1 0 0,1 21,16.5V20A1,1 0 0,1 20,21A17,17 0 0,1 3,4A1,1 0 0,1 4,3H7.5A1,1 0 0,1 8.5,4C8.5,5.25 8.7,6.45 9.07,7.57C9.18,7.92 9.1,8.31 8.82,8.59L6.62,10.79Z" />
+                                                </svg>
+                                                +48 534 693 760
+                                            </a>
+                                            <a href="mailto:karolinazlobekserduszko@gmail.com"
+                                                class="btn btn-outline-primary btn-sm w-100 mt-2">
+                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"
+                                                    class="me-1">
+                                                    <path
+                                                        d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                                                </svg>
+                                                Email
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <!-- Placówka 3 -->
+                                    <div class="location-card">
+                                        <div class="location-header">
+                                            <div class="location-heart">
+                                                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                                    <path
+                                                        d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5 2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z" />
+                                                </svg>
+                                            </div>
+                                            <div class="location-info">
+                                                <h6 class="location-name">"Serduszko" nr 3</h6>
+                                                <p class="location-address"><a
+                                                        href="https://maps.google.com/?q=ul.+Stanisława+Żółkiewskiego+17+LU"
+                                                        target="_blank"
+                                                        class="text-decoration-none text-body-secondary">ul. Stanisława
+                                                        Żółkiewskiego 17/LU</a><br>Kierownik Żłobka<br>mgr Dominika
+                                                    Kapcia</p>
+                                            </div>
+                                        </div>
+                                        <div class="location-actions">
+                                            <a href="tel:+48668256876" class="btn btn-primary btn-sm w-100">
+                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"
+                                                    class="me-1">
+                                                    <path
+                                                        d="M6.62,10.79C8.06,13.62 10.38,15.94 13.21,17.38L15.41,15.18C15.69,14.9 16.08,14.82 16.43,14.93C17.55,15.3 18.75,15.5 20,15.5A1,1 0 0,1 21,16.5V20A1,1 0 0,1 20,21A17,17 0 0,1 3,4A1,1 0 0,1 4,3H7.5A1,1 0 0,1 8.5,4C8.5,5.25 8.7,6.45 9.07,7.57C9.18,7.92 9.1,8.31 8.82,8.59L6.62,10.79Z" />
+                                                </svg>
+                                                +48 668 256 876
+                                            </a>
+                                            <a href="mailto:dominikakapciaserduiko@gmail.com"
+                                                class="btn btn-outline-primary btn-sm w-100 mt-2">
+                                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"
+                                                    class="me-1">
+                                                    <path
+                                                        d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                                                </svg>
+                                                Email
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-4 border-top">
+        <div class="container d-flex flex-column flex-md-row align-items-center justify-content-between gap-2">
+            <div class="small text-body-secondary">© <span id="year"></span> Żłobek Serduszko</div>
+            <div class="d-flex gap-3 small">
+                <a href="o-nas.html" class="link-secondary">O nas</a>
+                <a href="#oferta" class="link-secondary">Oferta</a>
+                <a href="#placowki" class="link-secondary">Placówki</a>
+                <a href="#kontakt" class="link-secondary">Kontakt</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="script.js"></script>
+    <script>
+        // Funkcja naprawy wiszących spójników i kwot
+        function fixOrphans() {
+            const textNodes = [];
+            const walker = document.createTreeWalker(
+                document.body,
+                NodeFilter.SHOW_TEXT,
+                null,
+                false
+            );
+
+            let node;
+            while (node = walker.nextNode()) {
+                if (node.textContent.trim().length > 0) {
+                    textNodes.push(node);
+                }
+            }
+
+            textNodes.forEach(node => {
+                let text = node.textContent;
+
+                // Napraw wiszące spójniki i krótkie słowa (1-3 litery)
+                text = text.replace(/\s+([aiouwz]|do|na|we|ze|od|po|za|by|czy|lub|albo|oraz|ale|lecz|czy)\s+/gi, '\u00A0$1\u00A0');
+
+                // Napraw kwoty - nie pozwól na przełamanie przed jednostką
+                text = text.replace(/(\d+(?:[,.]\d+)?)\s+(zł|złoty|złote|złotych|gr|groszy|grosz|%|proc\.)/gi, '$1\u00A0$2');
+
+                // Napraw liczby z jednostkami
+                text = text.replace(/(\d+)\s+(cm|mm|m|km|kg|g|godz\.|godzin|minut|dni|lat|roku|miesięcy)/gi, '$1\u00A0$2');
+
+                // Napraw skróty i tytuły
+                text = text.replace(/\s+(tel\.|ul\.|nr|mgr|dr|prof\.)\s+/gi, '\u00A0$1\u00A0');
+
+                // Napraw żeby nie było samego "x" na końcu linii  
+                text = text.replace(/\s+x\s+/gi, '\u00A0x\u00A0');
+
+                // Napraw pojedyncze litery na końcu
+                text = text.replace(/\s+([a-zA-Z])\s+/g, '\u00A0$1\u00A0');
+
+                if (text !== node.textContent) {
+                    node.textContent = text;
+                }
+            });
+        }
+
+        // Uruchom po załadowaniu strony
+        document.addEventListener('DOMContentLoaded', fixOrphans);
+
+        // Uruchom ponownie po zmianach w DOM (np. accordion)
+        const observer = new MutationObserver(() => {
+            setTimeout(fixOrphans, 100);
+        });
+
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true,
+            characterData: true
+        });
+    </script>
+</body>
+
+</html>
