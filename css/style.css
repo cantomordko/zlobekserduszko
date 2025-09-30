@@ -306,25 +306,32 @@ body {
 		display: none;
 	}
 	
-	/* Show mobile logo below brand text */
+	/* Show mobile logo on the left */
 	.mobile-logo {
 		display: block;
-		margin: 0 auto;
+		position: absolute;
+		left: 15px;
+		top: 50%;
+		transform: translateY(-50%);
+		z-index: 20;
 	}
 	
 	.mobile-logo .logo-img {
-		height: 40px;
+		height: 35px;
 		width: auto;
-		display: block;
-		margin: 0 auto;
 	}
 	
+	/* Center the brand text */
 	.modern-brand {
 		justify-content: center;
 		text-align: center;
-		flex-direction: column;
+		flex-direction: row;
 		gap: 0.3rem;
 		width: 100%;
+		position: absolute;
+		left: 50%;
+		transform: translateX(-50%);
+		z-index: 10;
 	}
 	
 	/* Brand text container - keep texts in one line */
@@ -340,12 +347,19 @@ body {
 		display: inline;
 	}
 	
-	/* Center the entire navbar brand area */
-	.navbar-brand.modern-brand {
-		margin: 0 auto;
+	/* Make sure navbar toggler stays on the right */
+	.navbar-toggler {
 		position: relative;
-		left: 50%;
-		transform: translateX(-50%);
+		z-index: 20;
+		margin-left: auto;
+	}
+	
+	/* Adjust container to handle the new layout */
+	.navbar .container {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		position: relative;
 	}
 }
 
