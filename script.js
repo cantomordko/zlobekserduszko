@@ -27,24 +27,26 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // Logo click functionality for homepage navigation
 function initializeLogoClick() {
-	const logoContainer = document.querySelector('.navbar-logo')
-	if (logoContainer) {
-		logoContainer.style.cursor = 'pointer'
-		logoContainer.addEventListener('click', function () {
-			// Check if we're on the homepage
-			if (
+	const interactiveElements = document.querySelectorAll('.navbar-logo, .mobile-logo, .desktop-logo, .modern-brand')
+
+	if (!interactiveElements.length) return
+
+	interactiveElements.forEach(el => {
+		el.style.cursor = 'pointer'
+		el.addEventListener('click', event => {
+			event.preventDefault()
+			const isHome =
 				window.location.pathname === '/' ||
 				window.location.pathname.endsWith('index.html') ||
 				window.location.pathname === '/index.html'
-			) {
-				// On homepage - scroll to top
+
+			if (isHome) {
 				window.scrollTo({ top: 0, behavior: 'smooth' })
 			} else {
-				// On other pages - navigate to homepage
 				window.location.href = 'index.html'
 			}
 		})
-	}
+	})
 }
 
 // Scroll effects for navbar logo

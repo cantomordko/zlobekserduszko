@@ -286,95 +286,6 @@ body {
 		width: 100%;
 		justify-content: center;
 	}
-
-	.navbar-collapse {
-		margin-top: 0;
-		padding-top: 0;
-		border-top: none;
-		position: static;
-	}
-	
-	/* Prevent logo and brand movement during collapse animation */
-	.navbar-collapse.collapsing ~ .mobile-logo,
-	.navbar-collapse.collapsing ~ .modern-brand {
-		position: absolute !important;
-		transition: none !important;
-		animation: none !important;
-	}
-	
-	.navbar-collapse.collapsing ~ .mobile-logo {
-		left: 15px !important;
-		top: 50% !important;
-		transform: translateY(-50%) !important;
-		z-index: 30 !important;
-	}
-	
-	.navbar-collapse.collapsing ~ .modern-brand {
-		left: 50% !important;
-		top: auto !important;
-		transform: translateX(-50%) !important;
-		z-index: 30 !important;
-		position: absolute !important;
-	}
-	
-	/* Also fix during the entire collapse/expand process */
-	.navbar-collapse.collapsing ~ .modern-brand:hover,
-	.navbar-collapse.collapsing ~ .modern-brand:active,
-	.navbar-collapse.collapsing ~ .modern-brand:focus {
-		left: 50% !important;
-		transform: translateX(-50%) !important;
-		top: auto !important;
-		position: absolute !important;
-	}
-	
-	/* Override global hover effects for mobile brand - keep it completely stable */
-	.modern-brand:hover,
-	.modern-brand:focus,
-	.modern-brand:visited,
-	.modern-brand:active,
-	.modern-brand:active:focus {
-		transform: translateX(-50%) !important;
-		position: absolute !important;
-		left: 50% !important;
-		top: auto !important;
-	}
-	
-	/* Prevent any movement during touch interactions */
-	.modern-brand:active {
-		transition: none !important;
-	}
-	
-	/* Ultimate stabilization - force fixed positions during any navbar state change */
-	.modern-navbar .mobile-logo,
-	.modern-navbar .modern-brand {
-		will-change: auto !important;
-	}
-	
-	/* Lock positions during any collapse state */
-	.navbar-collapse:not(.collapse) ~ .mobile-logo,
-	.navbar-collapse:not(.collapse) ~ .modern-brand,
-	.collapsing ~ .mobile-logo,
-	.collapsing ~ .modern-brand {
-		position: absolute !important;
-		transition: none !important;
-		animation: none !important;
-	}
-	
-	.navbar-collapse:not(.collapse) ~ .mobile-logo,
-	.collapsing ~ .mobile-logo {
-		left: 15px !important;
-		top: 50% !important;
-		transform: translateY(-50%) !important;
-		z-index: 30 !important;
-	}
-	
-	.navbar-collapse:not(.collapse) ~ .modern-brand,
-	.collapsing ~ .modern-brand {
-		left: 50% !important;
-		top: auto !important;
-		transform: translateX(-50%) !important;
-		z-index: 30 !important;
-	}
 }
 
 @media (max-width: 768px) {
@@ -386,15 +297,12 @@ body {
 		height: 32px;
 	}
 
-	.desktop-logo {
-		bottom: -30px;
-	}
-
 	.modern-brand {
 		font-size: 1.3rem;
 	}
 
-	.modern-navbar {
+	.modern-navbar,
+	.modern-navbar.scrolled {
 		padding: 0.75rem 0;
 	}
 }
@@ -404,8 +312,24 @@ body {
 	.desktop-logo {
 		display: none;
 	}
-	
-	/* Show mobile logo on the left */
+
+	/* Spójne odstępy dla mobile / tablet */
+	.modern-navbar,
+	.modern-navbar.scrolled {
+		padding: 0.75rem 0;
+		transition: background 0.3s ease, box-shadow 0.3s ease;
+	}
+
+	/* Kontener utrzymuje stałą wysokość, logo/nazwa/toggler w jednym rzędzie */
+	.modern-navbar .container {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		position: relative;
+		min-height: 56px;
+	}
+
+	/* Logo po lewej, pozycjonowane absolutnie aby nie wpływać na układ */
 	.mobile-logo {
 		display: block;
 		position: absolute;
@@ -413,125 +337,83 @@ body {
 		top: 50%;
 		transform: translateY(-50%);
 		z-index: 20;
-		transition: none; /* Prevent unwanted animations */
 	}
-	
+
 	.mobile-logo .logo-img {
-		height: 35px;
+		height: 36px;
 		width: auto;
 	}
-	
-	/* Center the brand text */
+
+	/* Marka w idealnym centrum navbara */
 	.modern-brand {
-		justify-content: center;
-		text-align: center;
-		flex-direction: row;
-		gap: 0.3rem;
-		width: 100%;
 		position: absolute;
 		left: 50%;
-		transform: translateX(-50%);
-		z-index: 10;
-		transition: none; /* Prevent unwanted animations */
-	}
-	
-	/* Disable hover effects on mobile to prevent movement */
-	.modern-brand:hover {
-		transform: translateX(-50%) !important; /* Keep centered position */
-	}
-	
-	.modern-brand:active {
-		transform: translateX(-50%) !important; /* Keep centered position on tap */
-	}
-	
-	/* Brand text container - keep texts in one line */
-	.brand-text-container {
-		display: flex;
-		justify-content: center;
-		align-items: center;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		display: inline-flex;
 		gap: 0.3rem;
+		margin: 0;
 		text-align: center;
 	}
-	
-	.brand-text, .brand-accent {
-		display: inline;
+
+	.modern-brand:hover,
+	.modern-brand:active {
+		transform: translate(-50%, -50%);
 	}
-	
-	/* Make sure navbar toggler stays on the right */
+
+	/* Hamburger wyrównany do prawej */
 	.navbar-toggler {
-		position: relative;
-		z-index: 30;
 		margin-left: auto;
-	}
-	
-	/* Adjust container to handle the new layout */
-	.navbar .container {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
 		position: relative;
+		z-index: 20;
 	}
-	
-	/* Fix for open mobile menu */
-	.navbar-collapse.show {
+
+	/* Menu rozwija się pod navbarem, nie zmieniając jego wysokości */
+	.modern-navbar .collapse,
+	.modern-navbar .collapsing {
 		position: absolute;
 		top: 100%;
 		left: 0;
 		right: 0;
+		width: 100%;
 		background: var(--glass-bg);
 		backdrop-filter: blur(20px);
 		-webkit-backdrop-filter: blur(20px);
 		border: 1px solid var(--glass-border);
 		border-top: none;
 		box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
-		z-index: 25;
 		padding: 1rem 0;
+		z-index: 15;
 	}
-	
-	.navbar-collapse.show .navbar-nav {
-		padding: 0 1rem;
+
+	.modern-navbar .collapsing {
+		display: block;
+		transition: height 0.3s ease;
 	}
-	
-	/* Keep brand elements fixed in position when menu is open */
-	.navbar-collapse.show ~ .mobile-logo {
-		position: absolute !important;
-		left: 15px !important;
-		top: 50% !important;
-		transform: translateY(-50%) !important;
-		z-index: 30 !important;
-		transition: none !important;
-		animation: none !important;
+
+	.modern-navbar .collapse:not(.show) {
+		display: none;
 	}
-	
-	.navbar-collapse.show ~ .modern-brand {
-		position: absolute !important;
-		left: 50% !important;
-		top: auto !important;
-		transform: translateX(-50%) !important;
-		z-index: 30 !important;
-		transition: none !important;
-		animation: none !important;
+
+	.navbar-collapse .navbar-nav {
+		padding: 0 1.25rem;
 	}
-	
-	/* Force brand to stay centered even when clicked during open menu */
-	.navbar-collapse.show ~ .modern-brand:hover,
-	.navbar-collapse.show ~ .modern-brand:active,
-	.navbar-collapse.show ~ .modern-brand:focus {
-		transform: translateX(-50%) !important;
-		left: 50% !important;
-		top: auto !important;
-		position: absolute !important;
+
+	.navbar-nav .nav-link {
+		text-align: center;
 	}
 }
 
 @media (max-width: 576px) {
 	.mobile-logo .logo-img {
-		height: 35px;
+		height: 30px;
 	}
 
 	.modern-brand {
-		font-size: 1.2rem;
+		font-size: 1.1rem;
 		gap: 0.2rem;
+		/* Maintain absolute positioning from parent media query */
+		transform: translate(-50%, -50%) !important;
 	}
 
 	.modern-nav-link {
