@@ -299,3 +299,25 @@ document.addEventListener('DOMContentLoaded', function () {
 		}
 	})
 })
+
+// Funkcja zapobiegająca wychodzeniu długich słów poza kontener na mobile
+function preventTextOverflow() {
+	const textElements = document.querySelectorAll(
+		'.download-title, .download-description, .text-content, .accordion-body, .alert, .info-box, .card-body, p:not(.timeline-activity):not(.timeline-time), li, h1, h2, h3, h4, h5, h6'
+	)
+
+	textElements.forEach(element => {
+		if (element.textContent && element.textContent.trim().length > 0) {
+			// Ustaw naturalne zawijanie, aby kontenery rosły zamiast rozrywać wyrazy
+			element.style.wordWrap = 'normal'
+			element.style.overflowWrap = 'normal'
+			element.style.wordBreak = 'normal'
+			element.style.whiteSpace = 'normal'
+			element.style.maxWidth = '100%'
+		}
+	})
+}
+
+// Uruchom funkcję po załadowaniu strony i przy zmianie rozmiaru okna
+document.addEventListener('DOMContentLoaded', preventTextOverflow)
+window.addEventListener('resize', preventTextOverflow)

@@ -1,0 +1,24 @@
+/* Cennik - Responsywne style dla tabeli Excel */
+
+/* Domyślny ratio dla desktopu */
+.excel-ratio {
+    --bs-aspect-ratio: 40%;
+}
+
+/* Responsywny ratio dla urządzeń mobilnych */
+@media (max-width: 768px) {
+    .excel-ratio {
+        --bs-aspect-ratio: 120%;
+    }
+}
+
+@media (max-width: 576px) {
+    .excel-ratio {
+        --bs-aspect-ratio: 150%;
+    }
+    
+    .excel-container {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+}

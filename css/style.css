@@ -9,6 +9,12 @@ body {
 	scroll-behavior: smooth;
 }
 
+body :where(p, li, h1, h2, h3, h4, h5, h6, blockquote) {
+	hyphens: none;
+	word-break: normal;
+	overflow-wrap: normal;
+}
+
 /* Modern Navbar Styling */
 .modern-navbar {
 	background: var(--glass-bg);
