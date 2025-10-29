@@ -246,7 +246,7 @@ function initializeHeroCarousel() {
 	}
 
 	// Change image every 5 seconds
-	setInterval(changeImage, 5000)
+	setInterval(changeImage, 10000)
 }
 
 // Dropdown hover functionality
