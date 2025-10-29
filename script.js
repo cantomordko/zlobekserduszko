@@ -177,22 +177,27 @@ function initializeHeroCarousel() {
 	let heroImg = container ? container.querySelector('img') : null
 	if (!container || !heroImg) return
 
-	const images = ['assets/img/img1.webp?v=1', 'assets/img/img3.webp?v=1', 'assets/img/img5.webp?v=1']
+	const images = [
+		{ src: 'assets/img/img1.webp?v=1', alt: 'Małe dziecko leży na jasnym dywanie i bawi się kolorowymi klockami. Na pierwszym planie rozrzucone są klocki w różnych kolorach: żółte, różowe, zielone, niebieskie, pomarańczowe i fioletowe. Dziecko trzyma w rękach duży żółty klocek.' },
+		{ src: 'assets/img/img3.webp?v=1', alt: 'Małe dziecko siedzi na podłodze w różowej koszulce, z uniesionymi rękami. Przed dzieckiem leżą kolorowe klocki w różnych kształtach i rozmiarach, ułożone w małe stosy. W tle widać pluszowego misia z różową kokardą oraz roślinę w żółtej doniczce.' },
+		{ src: 'assets/img/img5.webp?v=1', alt: 'Małe dziecko leży na brzuchu na białym materiale, ubrane w białe ubranko. Na głowie ma biały szydełkowy kapelusik z żółtym brzegiem i ozdobami w postaci różowej róży oraz pomarańczowych i zielonych elementów.' },
+	]
 
 	// Preload all images
-	images.forEach(src => {
+	images.forEach(image => {
 		const img = new Image()
-		img.src = src
+		img.src = image.src
 	})
 
 	let currentIndex = 0
 	// Find current image index
 	for (let i = 0; i < images.length; i++) {
-		if (heroImg.src.includes(images[i].split('?')[0].split('/').pop())) {
+		if (heroImg.src.includes(images[i].src.split('?')[0].split('/').pop())) {
 			currentIndex = i
 			break
 		}
 	}
+	heroImg.alt = images[currentIndex].alt
 
 	// Setup container for overlay effect
 	container.style.position = 'relative'
@@ -207,9 +212,10 @@ function initializeHeroCarousel() {
 		currentIndex = (currentIndex + 1) % images.length
 
 		// Create new image element
+		const { src, alt } = images[currentIndex]
 		const newImg = document.createElement('img')
-		newImg.src = images[currentIndex]
-		newImg.alt = heroImg.alt
+		newImg.src = src
+		newImg.alt = alt
 		newImg.style.position = 'absolute'
 		newImg.style.top = '0'
 		newImg.style.left = '0'
