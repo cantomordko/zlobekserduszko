@@ -136,7 +136,7 @@ function initializeMap() {
 			coords: [50.07891, 20.01049],
 			name: '"Serduszko" nr 2',
 			address: 'os. 2 Pułku Lotniczego 1',
-			manager: 'mgr Karolina Wlusek',
+			manager: 'mgr Karolina Włusek',
 			phone: '+48 534 693 760',
 			email: 'karolinazlobekserduszko@gmail.com',
 		},
