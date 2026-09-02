@@ -144,9 +144,9 @@ function initializeMap() {
 			coords: [50.05901, 19.95807],
 			name: '"Serduszko" nr 3',
 			address: 'ul. Stanisława Żółkiewskiego 17/LU',
-			manager: 'mgr Dominika Kapcia',
-			phone: '+48 668 256 876',
-			email: 'dominikakapciaserduszko@gmail.com',
+			manager: 'mgr Beata Gadzała-Grzęda',
+			phone: '+48 725 087 086',
+			email: 'zlobekserduszko3@gmail.com',
 		},
 	]
 
